@@ -153,7 +153,7 @@ $black: #202020;
 					<div
 						class="cell"
 						class:isLetter={cell.isLetter}
-						tabindex="0"
+						tabindex={cell.isLetter ? 0 : ""}
 						on:keydown={(e) => keydown(e, cell)}
 						on:click={() => clickCell(cell)}
 					>
