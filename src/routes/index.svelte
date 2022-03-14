@@ -1,9 +1,28 @@
 <script>
-let grid = [];
-let size = 13;
-let mode = "solve";
+import {browser} from "$app/env";
 
-grid = [[{"isLetter":true,"letter":"","number":1},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":2},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":3},{"isLetter":true,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":4},{"isLetter":true,"letter":"","number":5},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":6}],[{"isLetter":true,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":7},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":8},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":null}],[{"isLetter":true,"letter":"","number":9},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":10},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null}],[{"isLetter":true,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":null}],[{"isLetter":true,"letter":"","number":11},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":12},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null}],[{"isLetter":true,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":false,"letter":"","number":null}],[{"isLetter":true,"letter":"","number":13},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":14},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":15},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":16}],[{"isLetter":false,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":null}],[{"isLetter":true,"letter":"","number":17},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":18},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":19},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":20},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null}],[{"isLetter":true,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":null}],[{"isLetter":true,"letter":"","number":21},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":22},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null}],[{"isLetter":true,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":null}],[{"isLetter":true,"letter":"","number":23},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":false,"letter":"","number":null},{"isLetter":true,"letter":"","number":24},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null},{"isLetter":true,"letter":"","number":null}]];
+let grid = [];
+let size = 15;
+let mode = "solve";
+let direction = "horizontal";
+
+let answers = {
+	horizontal: [],
+	vertical: [],
+};
+
+initGrid();
+
+try {
+	grid = JSON.parse(localStorage.getItem("grid"));
+	
+} catch(e) {
+	console.log(e);
+}
+
+$: if (browser) {
+	localStorage.setItem("grid", JSON.stringify(grid));
+}
 
 function initGrid() {
 	grid = [];
@@ -15,6 +34,18 @@ function initGrid() {
 			row.push({
 				isLetter: true,
 				letter: "",
+				x: j,
+				y: i,
+				
+				answer: {
+					horizontal: null,
+					vertical: null,
+				},
+				
+				answerStart: {
+					horizontal: null,
+					vertical: null,
+				},
 			});
 		}
 		
@@ -24,17 +55,59 @@ function initGrid() {
 	grid = grid;
 }
 
-function clickCell(cell) {
-	if (mode !== "set") {
-		return;
-	}
+let hilitedCells = [];
+
+function hilite(cell) {
 	
-	cell.isLetter = !cell.isLetter;
-	
-	grid = grid;
 }
 
-function addNumbers() {
+function mousedownCell(cell) {
+	if (mode === "set") {
+		cell.isLetter = !cell.isLetter;
+		
+		updateNumbers();
+		updateAnswers();
+		
+		grid = grid;
+	} else {
+		if (document.activeElement === cell.div) {
+			console.log("focused");
+		}
+		
+		hilite(cell);
+	}
+}
+
+function updateAnswers() {
+	for (let cell of allCells()) {
+		
+	}
+	for (let cell of allCells()) {
+		if (cell.horizontalWordStart) {
+			answers.horizontal.push({
+				start: cell,
+			});
+		}
+		
+		if (cell.verticalWordStart) {
+			answers.vertical.push({
+				start: cell,
+			});
+		}
+	}
+	
+	console.log(answers);
+}
+
+function *allCells() {
+	for (let y = 0; y < size; y++) {
+		for (let x = 0; x < size; x++) {
+			yield grid[y][x];
+		}
+	}
+}
+
+function updateNumbers() {
 	let n = 1;
 	
 	for (let y = 0; y < size; y++) {
@@ -66,14 +139,41 @@ function addNumbers() {
 	//}
 }
 
-function keydown(e, cell) {
+function keydown(e, cell, x, y) {
 	let {key} = e;
+	let isThereALetter = (cell.letter != '');
 	
 	if (key.length === 1) {
 		cell.letter = key.toUpperCase();
+		
+		if (direction === "horizontal") {
+			if (x + 1 < size) {
+				grid[y][x + 1].div.focus();
+			}
+		} else {
+			if (y + 1 < size) {
+				grid[y + 1][x].div.focus();
+			}
+		}
+	} else if (key === "Backspace") {
+		cell.letter = "";
+		
+		if (direction === "horizontal") {
+			if (x - 1 >= 0) {
+				grid[y][x - 1].div.focus();
+			}
+		} else {
+			if (y - 1 >= 0) {
+				grid[y - 1][x].div.focus();
+			}
+		}
 	}
 	
 	grid = grid;
+}
+
+function registerDiv(div, [x, y]) {
+	grid[y][x].div = div;
 }
 
 function debug() {
@@ -124,6 +224,10 @@ $black: #202020;
 	background: white;
 }
 
+.cell.hilited {
+	background: #00000012;
+}
+
 .letter {
 	font-size: 18px;
 	//width: 100%;
@@ -137,39 +241,53 @@ $black: #202020;
 	top: 1px;
 	left: 1px;
 }
+
+#buttons {
+	display: flex;
+	justify-content: space-between;
+}
 </style>
 
 <div id="main">
 	<div>
-		<button on:click={initGrid}>Init</button>
-		<button on:click={addNumbers}>Add numbers</button>
-		<button on:click={debug}>Debug</button>
-	</div>
-	<br><br>
-	<div id="table">
-		{#each grid as row, y}
-			<div class="row">
-				{#each row as cell, x}
-					<div
-						class="cell"
-						class:isLetter={cell.isLetter}
-						tabindex={cell.isLetter ? 0 : null}
-						on:keydown={(e) => keydown(e, cell)}
-						on:click={() => clickCell(cell)}
-					>
-						{#if cell.isLetter}
-							{#if cell.number}
-								<div class="number">
-									{cell.number}
+		<div id="buttons">
+			<div>
+				<button on:click={initGrid}>Init</button>
+				<button on:click={debug}>debug</button>
+				<button on:click={() => mode = mode === "set" ? "solve" : "set"}>{mode}</button>
+			</div>
+			<div>
+				<button on:click={() => direction = direction === "horizontal" ? "vertical" : "horizontal"}>{direction}</button>
+			</div>
+		</div>
+		<br><br>
+		<div id="table">
+			{#each grid as row, y}
+				<div class="row">
+					{#each row as cell, x}
+						<div
+							class="cell"
+							class:isLetter={cell.isLetter}
+							class:hilited={hilitedCells.includes(cell)}
+							tabindex={cell.isLetter ? 0 : null}
+							on:keydown={(e) => keydown(e, cell, x, y)}
+							on:mousedown={() => mousedownCell(cell)}
+							use:registerDiv={[x, y]}
+						>
+							{#if cell.isLetter}
+								{#if cell.number}
+									<div class="number">
+										{cell.number}
+									</div>
+								{/if}
+								<div class="letter">
+									{cell.letter}
 								</div>
 							{/if}
-							<div class="letter">
-								{cell.letter}
-							</div>
-						{/if}
-					</div>
-				{/each}
-			</div>
-		{/each}
+						</div>
+					{/each}
+				</div>
+			{/each}
+		</div>
 	</div>
 </div>
